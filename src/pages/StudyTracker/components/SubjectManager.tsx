@@ -70,15 +70,15 @@ export const SubjectManager: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: '24px' }}>
       <Button
         type="primary"
         onClick={() => setIsModalOpen(true)}
-        style={{ marginBottom: 16 }}
+        style={{ marginBottom: 24 }}
       >
         Thêm môn học
       </Button>
-      <Table columns={columns} dataSource={subjects} rowKey="id" />
+      <Table columns={columns} dataSource={subjects} rowKey="id" bordered />
 
       <Modal
         title={editing ? 'Sửa môn học' : 'Thêm môn học'}
@@ -96,7 +96,7 @@ export const SubjectManager: React.FC = () => {
             name="name"
             rules={[{ required: true, message: 'Vui lòng nhập tên môn' }]}
           >
-            <Input />
+            <Input placeholder="Ví dụ: Toán, Văn, Anh..." />
           </Form.Item>
         </Form>
       </Modal>

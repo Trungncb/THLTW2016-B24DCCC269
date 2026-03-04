@@ -11,14 +11,14 @@ const StudyTrackerPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('subjects');
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Header style={{ background: '#fff', padding: '0 20px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
-        <h1 style={{ margin: 0, lineHeight: '64px', fontSize: '20px', fontWeight: 'bold' }}>
-          Quản lý tiến độ học tập
+    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
+      <Header style={{ background: '#1890ff', padding: '0 24px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}>
+        <h1 style={{ margin: 0, lineHeight: '64px', fontSize: '22px', fontWeight: '600', color: '#fff' }}>
+          📚 Quản lý tiến độ học tập
         </h1>
       </Header>
-      <Content style={{ background: '#f5f5f5', minHeight: 'calc(100vh - 64px)' }}>
-        <Tabs activeKey={activeTab} onChange={setActiveTab} style={{ padding: 0 }}>
+      <Content style={{ background: '#f0f2f5', minHeight: 'calc(100vh - 64px)', padding: '0' }}>
+        <Tabs activeKey={activeTab} onChange={setActiveTab} style={{ background: '#fff' }}>
           <Tabs.TabPane
             tab={<><BookOutlined /> Môn học</>}
             key="subjects"

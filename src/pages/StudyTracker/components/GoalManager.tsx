@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Table, Button, Modal, Form, InputNumber, Select, message, Space } from 'antd';
+import { Table, Button, Modal, Form, InputNumber, Select, message, Space, DatePicker } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import { useStudy, Goal } from '@/models/study';
@@ -84,15 +84,15 @@ export const GoalManager: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: '24px' }}>
       <Button
         type="primary"
         onClick={() => setIsModalOpen(true)}
-        style={{ marginBottom: 16 }}
+        style={{ marginBottom: 24 }}
       >
         Thiết lập mục tiêu
       </Button>
-      <Table columns={columns} dataSource={goals} rowKey="id" />
+      <Table columns={columns} dataSource={goals} rowKey="id" bordered />
 
       <Modal
         title={editing ? 'Sửa mục tiêu' : 'Thêm mục tiêu'}

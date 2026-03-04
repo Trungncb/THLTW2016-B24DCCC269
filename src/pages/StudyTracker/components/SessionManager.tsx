@@ -119,15 +119,15 @@ export const SessionManager: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: '24px' }}>
       <Button
         type="primary"
         onClick={() => setIsModalOpen(true)}
-        style={{ marginBottom: 16 }}
+        style={{ marginBottom: 24 }}
       >
         Thêm buổi học
       </Button>
-      <Table columns={columns} dataSource={sessions} rowKey="id" />
+      <Table columns={columns} dataSource={sessions} rowKey="id" bordered scroll={{ x: true }} />
 
       <Modal
         title={editing ? 'Sửa buổi học' : 'Thêm buổi học'}
