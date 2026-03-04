@@ -43,10 +43,10 @@
 		component: './TodoList',
 	},
 	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
+		path: '/study-tracker',
+		name: 'StudyTracker',
+		icon: 'BookOutlined',
+		component: './StudyTracker',
 	},
 
 	// DANH MUC HE THONG
