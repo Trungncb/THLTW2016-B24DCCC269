@@ -42,12 +42,6 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
-	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
-	},
 
 	// DANH MUC HE THONG
 	// {
