@@ -42,11 +42,12 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+    // ...existing code...
 	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
+		path: '/rock-paper-scissors',
+		name: 'RockPaperScissors',
+		icon: 'FistOutlined',
+		component: './RockPaperScissors',
 	},
 
 	// DANH MUC HE THONG
