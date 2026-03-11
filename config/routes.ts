@@ -49,6 +49,12 @@
 		icon: 'FistOutlined',
 		component: './RockPaperScissors',
 	},
+	{
+		path: '/question-bank',
+		name: 'QuestionBank',
+		icon: 'FileTextOutlined',
+		component: './QuestionBank',
+	},
 
 	// DANH MUC HE THONG
 	// {
