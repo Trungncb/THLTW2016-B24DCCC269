@@ -4,11 +4,7 @@ import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { SubjectService } from '@/models/questionbank/services';
 import { Subject } from '@/models/questionbank/types';
 
-interface SubjectTabProps {
-  onRefresh: () => void;
-}
-
-const SubjectTab: React.FC<SubjectTabProps> = ({ onRefresh }) => {
+const SubjectTab: React.FC = () => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -82,7 +78,7 @@ const SubjectTab: React.FC<SubjectTabProps> = ({ onRefresh }) => {
     {
       title: 'Hành động',
       key: 'action',
-      render: (_, record) => (
+      render: (_: any, record: Subject) => (
         <Space>
           <Button
             type="primary"

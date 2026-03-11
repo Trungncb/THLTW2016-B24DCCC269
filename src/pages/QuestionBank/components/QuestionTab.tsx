@@ -4,11 +4,7 @@ import { PlusOutlined, DeleteOutlined, EditOutlined, SearchOutlined } from '@ant
 import { QuestionService, SubjectService, KnowledgeBlockService } from '@/models/questionbank/services';
 import { Question, Subject, KnowledgeBlock } from '@/models/questionbank/types';
 
-interface QuestionTabProps {
-  onRefresh: () => void;
-}
-
-const QuestionTab: React.FC<QuestionTabProps> = ({ onRefresh }) => {
+const QuestionTab: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [blocks, setBlocks] = useState<KnowledgeBlock[]>([]);
@@ -81,13 +77,13 @@ const QuestionTab: React.FC<QuestionTabProps> = ({ onRefresh }) => {
       title: 'Môn học',
       dataIndex: 'subjectId',
       key: 'subjectId',
-      render: (id) => subjects.find(s => s.id === id)?.name || id,
+      render: (id: string) => subjects.find(s => s.id === id)?.name || id,
     },
     {
       title: 'Khối kiến thức',
       dataIndex: 'knowledgeBlockId',
       key: 'knowledgeBlockId',
-      render: (id) => blocks.find(b => b.id === id)?.name || id,
+      render: (id: string) => blocks.find(b => b.id === id)?.name || id,
     },
     {
       title: 'Độ khó',
@@ -100,13 +96,13 @@ const QuestionTab: React.FC<QuestionTabProps> = ({ onRefresh }) => {
       dataIndex: 'content',
       key: 'content',
       ellipsis: true,
-      render: (text) => text.substring(0, 50) + (text.length > 50 ? '...' : ''),
+      render: (text: string) => text.substring(0, 50) + (text.length > 50 ? '...' : ''),
     },
     {
       title: 'Hành động',
       key: 'action',
       width: 120,
-      render: (_, record) => (
+      render: (_: any, record: Question) => (
         <Space size="small">
           <Button
             type="primary"

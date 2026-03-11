@@ -4,11 +4,7 @@ import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { KnowledgeBlockService } from '@/models/questionbank/services';
 import { KnowledgeBlock } from '@/models/questionbank/types';
 
-interface KnowledgeBlockTabProps {
-  onRefresh: () => void;
-}
-
-const KnowledgeBlockTab: React.FC<KnowledgeBlockTabProps> = ({ onRefresh }) => {
+const KnowledgeBlockTab: React.FC = () => {
   const [blocks, setBlocks] = useState<KnowledgeBlock[]>([]);
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -70,7 +66,7 @@ const KnowledgeBlockTab: React.FC<KnowledgeBlockTabProps> = ({ onRefresh }) => {
     {
       title: 'Hành động',
       key: 'action',
-      render: (_, record) => (
+      render: (_: any, record: KnowledgeBlock) => (
         <Space>
           <Button
             type="primary"
