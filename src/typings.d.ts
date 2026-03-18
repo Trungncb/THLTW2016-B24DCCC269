@@ -59,3 +59,63 @@ declare const APP_CONFIG_TITLE_CORE: string;
 declare const APP_CONFIG_TITLE_CSVC: string;
 declare const APP_CONFIG_TITLE_THU_VIEN: string;
 declare const APP_CONFIG_TITLE_QLVB: string;
+
+declare module TienIch {
+	export interface Staff {
+		id?: number;
+		name: string;
+		phone?: string;
+		email?: string;
+		position?: string;
+		workingHours?: string; // "9h-17h"
+		startDayOfWeek?: number; // 1-7 (Mon-Sun)
+		endDayOfWeek?: number;
+		createdAt?: Date;
+		updatedAt?: Date;
+	}
+
+	export interface Service {
+		id?: number;
+		name: string;
+		description?: string;
+		price: number;
+		duration?: number; // in minutes
+		createdAt?: Date;
+		updatedAt?: Date;
+	}
+
+	export interface Booking {
+		id?: number;
+		staffId: number;
+		serviceId: number;
+		customerName: string;
+		customerPhone: string;
+		date: string; // YYYY-MM-DD
+		startTime: string; // HH:MM
+		endTime: string; // HH:MM
+		status: 'pending' | 'confirmed' | 'completed' | 'cancelled'; // Default: "pending"
+		notes?: string;
+		createdAt?: Date;
+		updatedAt?: Date;
+	}
+
+	export interface Rating {
+		id?: number;
+		bookingId: number;
+		staffId: number;
+		serviceId: number;
+		score: number; // 1-5
+		comment?: string;
+		staffReply?: string;
+		createdAt?: Date;
+		updatedAt?: Date;
+	}
+
+	export interface Statistics {
+		date: string;
+		bookingCount: number;
+		revenue: number;
+		serviceId?: number;
+		staffId?: number;
+	}
+}

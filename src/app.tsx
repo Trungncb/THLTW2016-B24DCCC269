@@ -28,7 +28,14 @@ export const initialStateConfig = {
  * */
 export async function getInitialState(): Promise<IInitialState> {
 	return {
-		permissionLoading: true,
+		permissionLoading: false,
+		currentUser: {
+			id: 'test-user',
+			name: 'Test User',
+			avatar: '',
+			access_token: 'test-token',
+		},
+		authorizedPermissions: [],
 	};
 }
 
