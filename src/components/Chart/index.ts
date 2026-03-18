@@ -1,5 +1,9 @@
 import { type ApexOptions } from 'apexcharts';
+import ColumnChart from './ColumnChart';
+import DonutChart from './DonutChart';
+import LineChart from './LineChart';
 
+export { ColumnChart, DonutChart, LineChart };
 export * from './ColumnChart';
 export * from './DonutChart';
 export * from './LineChart';

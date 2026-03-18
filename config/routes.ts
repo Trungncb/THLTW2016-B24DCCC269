@@ -44,9 +44,15 @@
 	},
 	{
 		path: '/guess-number',
-		name: 'GuessNumber',
+		name: 'Guess Number',
 		icon: 'QuestionCircleOutlined',
 		component: './GuessNumber',
+	},
+	{
+		path: '/tien-ich',
+		name: 'Service Management',
+		icon: 'ShoppingOutlined',
+		component: './TienIch',
 	},
 
 	// DANH MUC HE THONG
