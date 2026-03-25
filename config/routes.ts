@@ -49,6 +49,40 @@
 		component: './GuessNumber',
 	},
 
+	// VAN BANG - Quan ly so van bang
+	{
+		name: 'VanBang',
+		path: '/van-bang',
+		icon: 'FileTextOutlined',
+		routes: [
+			{
+				name: 'SoVanBang',
+				path: 'so-van-bang',
+				component: './VanBang/SoVanBang',
+			},
+			{
+				name: 'QuyetDinhTotNghiep',
+				path: 'quyet-dinh-tot-nghiep',
+				component: './VanBang/QuyetDinhTotNghiep',
+			},
+			{
+				name: 'ConfigBieuMau',
+				path: 'config-bieu-mau',
+				component: './VanBang/ConfigBieuMau',
+			},
+			{
+				name: 'ThongTinVanBang',
+				path: 'thong-tin-van-bang',
+				component: './VanBang/ThongTinVanBang',
+			},
+			{
+				name: 'TraCuuVanBang',
+				path: 'tra-cuu',
+				component: './VanBang/TraCuuVanBang',
+			},
+		],
+	},
+
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
