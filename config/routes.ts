@@ -42,12 +42,6 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
-	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
-	},
 
 	// DANH MUC HE THONG
 	// {
@@ -85,6 +79,40 @@
 		layout: false,
 		hideInMenu: true,
 	},
+
+	// CLUB MANAGEMENT SYSTEM
+	{
+		name: 'Quản lý câu lạc bộ',
+		path: '/clubs',
+		icon: 'TeamOutlined',
+		routes: [
+			{
+				path: '/clubs',
+				name: 'Danh sách câu lạc bộ',
+				component: './Club',
+				exact: true,
+			},
+			{
+				path: '/clubs/registrations',
+				name: 'Quản lý đơn đăng ký',
+				component: './Registration',
+				exact: true,
+			},
+			{
+				path: '/clubs/members',
+				name: 'Quản lý thành viên',
+				component: './Member',
+				exact: true,
+			},
+			{
+				path: '/clubs/report',
+				name: 'Báo cáo thống kê',
+				component: './Report',
+				exact: true,
+			},
+		],
+	},
+
 	{
 		path: '/',
 	},
