@@ -1,0 +1,19 @@
+.card {
+  height: 100%;
+  transition: all 0.3s ease;
+
+  :global {
+    .ant-card {
+      border-radius: 8px;
+    }
+
+    .ant-card-cover {
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+}

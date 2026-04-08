@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  height: 100%;
+
+  :global {
+    .ant-tabs {
+      height: 100%;
+    }
+
+    .ant-tabs-content {
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .ant-tabs-nav {
+        margin: 0;
+      }
+
+      .ant-tabs-tab {
+        padding: 12px 8px !important;
+        font-size: 12px;
+      }
+    }
+  }
+}

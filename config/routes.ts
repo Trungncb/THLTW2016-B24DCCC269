@@ -43,10 +43,10 @@
 		component: './TodoList',
 	},
 	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
+		path: '/travel-planner',
+		name: 'Travel Planner',
+		icon: 'GlobeOutlined',
+		component: './TravelPlanner',
 	},
 
 	// DANH MUC HE THONG

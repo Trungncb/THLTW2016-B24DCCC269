@@ -1,0 +1,25 @@
+.container {
+  padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+
+  :global {
+    .ant-statistic-title {
+      font-size: 12px;
+
+      @media (max-width: 768px) {
+        font-size: 10px;
+      }
+    }
+
+    .ant-statistic-content {
+      font-size: 20px;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.container {
+  padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+}
+
+.filterCard {
+  margin-bottom: 24px;
+
+  :global {
+    .ant-card-body {
+      padding: 16px;
+
+      @media (max-width: 768px) {
+        padding: 12px;
+      }
+    }
+  }
+}
+
+.resultInfo {
+  margin-bottom: 16px;
+  padding: 8px 0;
+
+  p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+  }
+}
