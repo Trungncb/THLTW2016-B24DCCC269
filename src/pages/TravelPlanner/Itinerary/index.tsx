@@ -6,19 +6,18 @@ import {
   Input,
   DatePicker,
   Select,
-  Table,
-  Space,
   Modal,
   message,
   Collapse,
   Tag,
   Row,
   Col,
+  Space,
 } from 'antd';
-import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { useMediaQuery } from 'react-responsive';
-import type { Itinerary, ItineraryDay, Destination } from '@/models/travelplanner';
+import type { Itinerary, Destination } from '@/models/travelplanner';
 import { itineraryService, destinationService } from '@/services/TravelPlanner';
 import styles from './Itinerary.less';
 
@@ -26,14 +25,11 @@ const ItineraryComponent: React.FC = () => {
   const [itineraries, setItineraries] = useState<Itinerary[]>([]);
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [form] = Form.useForm();
-  const [editingItinerary, setEditingItinerary] = useState<Itinerary | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const loadData = async () => {
     try {
-      setLoading(true);
       const [itinerariesData, destinationsData] = await Promise.all([
         itineraryService.getItineraries(),
         destinationService.getDestinations(),
@@ -42,8 +38,6 @@ const ItineraryComponent: React.FC = () => {
       setDestinations(destinationsData);
     } catch (error) {
       message.error('Không thể tải dữ liệu');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -133,7 +127,7 @@ const ItineraryComponent: React.FC = () => {
 
   const collapseItems = itineraries.map((itinerary) => ({
     key: itinerary.id,
-    label: (
+    header: (
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
         <span>
           <strong>{itinerary.title}</strong>
@@ -146,39 +140,16 @@ const ItineraryComponent: React.FC = () => {
         </span>
       </div>
     ),
-    children: (
+    content: (
       <div>
         <p>{itinerary.description}</p>
         <div className={styles.itineraryDetails}>{renderItineraryDetails(itinerary)}</div>
         <Space>
-          <Button
-            type="primary"
-            size="small"
-            icon={<EditOutlined />}
-            onClick={() => setEditingItinerary(itinerary)}
-          >
-            Chỉnh sửa
-          </Button>
-          <Button
-            danger
-            size="small"
-            icon={<DeleteOutlined />}
-            onClick={() => handleDeleteItinerary(itinerary.id)}
-          >
+          <Button size="small" icon={<DeleteOutlined />} onClick={() => handleDeleteItinerary(itinerary.id)} danger>
             Xóa
           </Button>
         </Space>
       </div>
-    ),
-    extra: (
-      <Space onClick={(e) => e.stopPropagation()}>
-        <Button
-          type="text"
-          size="small"
-          icon={<DeleteOutlined />}
-          onClick={() => handleDeleteItinerary(itinerary.id)}
-        />
-      </Space>
     ),
   }));
 
@@ -193,7 +164,11 @@ const ItineraryComponent: React.FC = () => {
         }
       >
         {itineraries.length > 0 ? (
-          <Collapse items={collapseItems} />
+          <Collapse accordion>{collapseItems.map((item) => (
+            <Collapse.Panel header={item.header} key={item.key}>
+              {item.content}
+            </Collapse.Panel>
+          ))}</Collapse>
         ) : (
           <p style={{ textAlign: 'center', color: '#999', padding: '40px 0' }}>
             Chưa có lịch trình nào. Tạo một lịch trình mới để bắt đầu!
@@ -203,7 +178,7 @@ const ItineraryComponent: React.FC = () => {
 
       <Modal
         title="Tạo lịch trình mới"
-        open={isModalVisible}
+        visible={isModalVisible}
         onOk={() => form.submit()}
         onCancel={() => setIsModalVisible(false)}
         width={isMobile ? '95%' : 600}

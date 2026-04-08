@@ -8,23 +8,17 @@ import {
   Input,
   Select,
   InputNumber,
-  Upload,
   message,
-  Space,
   Popconfirm,
   Row,
   Col,
   Statistic,
-  Chart,
 } from 'antd';
 import {
   PlusOutlined,
   EditOutlined,
   DeleteOutlined,
-  UploadOutlined,
-  BarChartOutlined,
 } from '@ant-design/icons';
-import dayjs from 'dayjs';
 import ApexChart from 'react-apexcharts';
 import { useMediaQuery } from 'react-responsive';
 import type { Destination } from '@/models/travelplanner';
@@ -96,7 +90,7 @@ const Admin: React.FC = () => {
     setIsModalVisible(true);
   };
 
-  const columns = [
+  const columns: any = [
     {
       title: 'Tên điểm đến',
       dataIndex: 'name',
@@ -115,49 +109,45 @@ const Admin: React.FC = () => {
         };
         return typeMap[type] || type;
       },
-      responsive: ['md'],
     },
     {
       title: 'Địa điểm',
       dataIndex: 'location',
       key: 'location',
-      responsive: ['md'],
     },
     {
       title: 'Giá (VND)',
       dataIndex: 'price',
       key: 'price',
       render: (price: number) => price.toLocaleString(),
-      responsive: ['md'],
     },
     {
       title: 'Đánh giá',
       dataIndex: 'rating',
       key: 'rating',
       render: (rating: number) => `⭐ ${rating}`,
-      responsive: ['lg'],
     },
     {
       title: 'Hành động',
       key: 'action',
       render: (_: any, record: Destination) => (
-        <Space size="small">
+        <>
           <Button
             type="primary"
             size="small"
             icon={<EditOutlined />}
             onClick={() => handleEdit(record)}
+            style={{ marginRight: 8 }}
           />
           <Popconfirm
             title="Xóa điểm đến"
-            description="Bạn có chắc muốn xóa?"
-            onConfirm={() => handleDelete(record.id)}
             okText="Xóa"
             cancelText="Hủy"
+            onConfirm={() => handleDelete(record.id)}
           >
             <Button type="primary" danger size="small" icon={<DeleteOutlined />} />
           </Popconfirm>
-        </Space>
+        </>
       ),
     },
   ];
@@ -271,7 +261,7 @@ const Admin: React.FC = () => {
 
       <Modal
         title={editingDestination ? 'Chỉnh sửa điểm đến' : 'Thêm điểm đến mới'}
-        open={isModalVisible}
+        visible={isModalVisible}
         onOk={() => form.submit()}
         onCancel={() => setIsModalVisible(false)}
         width={isMobile ? '95%' : 700}

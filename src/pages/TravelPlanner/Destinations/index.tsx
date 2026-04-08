@@ -4,7 +4,6 @@ import {
   Col,
   Card,
   Select,
-  InputNumber,
   Input,
   Button,
   Space,
@@ -79,8 +78,9 @@ const Destinations: React.FC = () => {
       );
     }
 
-    if (filters.minRating) {
-      result = result.filter((d) => d.rating >= filters.minRating);
+    if (filters.minRating && filters.minRating > 0) {
+      const minRating = filters.minRating;
+      result = result.filter((d) => d.rating >= minRating);
     }
 
     // Apply sorting

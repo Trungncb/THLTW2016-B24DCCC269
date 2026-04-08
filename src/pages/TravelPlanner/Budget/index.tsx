@@ -11,12 +11,11 @@ import {
   Modal,
   message,
   Progress,
-  Space,
   Statistic,
   Alert,
   Empty,
 } from 'antd';
-import { PlusOutlined, DeleteOutlined, DollarOutlined, AlertOutlined } from '@ant-design/icons';
+import { PlusOutlined, DeleteOutlined, AlertOutlined } from '@ant-design/icons';
 import Chart from 'react-apexcharts';
 import { useMediaQuery } from 'react-responsive';
 import type { BudgetItem, BudgetCategory, Itinerary } from '@/models/travelplanner';
@@ -182,7 +181,7 @@ const Budget: React.FC = () => {
 
   const chartSeries = Object.values(byCategory).filter((v) => v > 0);
 
-  const columns = [
+  const columns: any = [
     {
       title: 'Danh mục',
       dataIndex: 'category',
@@ -199,7 +198,6 @@ const Budget: React.FC = () => {
       dataIndex: 'amount',
       key: 'amount',
       render: (amount: number) => `${amount.toLocaleString()} VND`,
-      responsive: ['md'],
     },
     {
       title: 'Hành động',
@@ -335,7 +333,7 @@ const Budget: React.FC = () => {
 
             <Modal
               title="Thêm chi tiêu"
-              open={isModalVisible}
+              visible={isModalVisible}
               onOk={() => form.submit()}
               onCancel={() => setIsModalVisible(false)}
               width={isMobile ? '95%' : 600}
