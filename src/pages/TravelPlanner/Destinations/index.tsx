@@ -18,7 +18,7 @@ import { SearchOutlined, ClearOutlined } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
 import DestinationCard from '../components/DestinationCard';
 import { destinationService } from '@/services/TravelPlanner';
-import { Destination, DestinationFilter } from '@/models/travelplanner';
+import type { Destination, DestinationFilter } from '@/models/travelplanner';
 import styles from './Destinations.less';
 
 const Destinations: React.FC = () => {
@@ -36,6 +36,18 @@ const Destinations: React.FC = () => {
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
+
+  const loadDestinations = async () => {
+    try {
+      setLoading(true);
+      const data = await destinationService.getDestinations();
+      setDestinations(data);
+    } catch (error) {
+      message.error('Không thể tải danh sách điểm đến');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Load destinations on mount
   useEffect(() => {
@@ -90,18 +102,6 @@ const Destinations: React.FC = () => {
 
     setFilteredDestinations(result);
   }, [destinations, filters, sortBy]);
-
-  const loadDestinations = async () => {
-    try {
-      setLoading(true);
-      const data = await destinationService.getDestinations();
-      setDestinations(data);
-    } catch (error) {
-      message.error('Không thể tải danh sách điểm đến');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleFilterChange = (newFilters: Partial<DestinationFilter>) => {
     setFilters((prev) => ({ ...prev, ...newFilters }));

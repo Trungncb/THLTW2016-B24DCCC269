@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Rate, Tag, Button, Space, Image } from 'antd';
 import { HeartOutlined, HeartFilled, ShoppingCartOutlined } from '@ant-design/icons';
 import styles from './DestinationCard.less';
-import { Destination } from '@/models/travelplanner';
+import type { Destination } from '@/models/travelplanner';
 
 interface DestinationCardProps {
   destination: Destination;
@@ -42,11 +42,13 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
       className={styles.card}
       actions={[
         <Button
+          key="favorite"
           type="text"
           icon={isFavorite ? <HeartFilled style={{ color: 'red' }} /> : <HeartOutlined />}
           onClick={() => onFavorite?.(destination, !isFavorite)}
         />,
         <Button
+          key="add-to-itinerary"
           type="primary"
           shape="circle"
           icon={<ShoppingCartOutlined />}

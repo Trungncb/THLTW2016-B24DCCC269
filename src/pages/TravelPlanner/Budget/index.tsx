@@ -19,7 +19,7 @@ import {
 import { PlusOutlined, DeleteOutlined, DollarOutlined, AlertOutlined } from '@ant-design/icons';
 import Chart from 'react-apexcharts';
 import { useMediaQuery } from 'react-responsive';
-import { BudgetItem, BudgetCategory, Itinerary } from '@/models/travelplanner';
+import type { BudgetItem, BudgetCategory, Itinerary } from '@/models/travelplanner';
 import { budgetService, itineraryService } from '@/services/TravelPlanner';
 import styles from './Budget.less';
 
@@ -31,16 +31,6 @@ const Budget: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  useEffect(() => {
-    loadItineraries();
-  }, []);
-
-  useEffect(() => {
-    if (selectedItinerary) {
-      loadBudgetItems();
-    }
-  }, [selectedItinerary]);
 
   const loadItineraries = async () => {
     try {
@@ -102,6 +92,16 @@ const Budget: React.FC = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadItineraries();
+  }, []);
+
+  useEffect(() => {
+    if (selectedItinerary) {
+      loadBudgetItems();
+    }
+  }, [selectedItinerary]);
 
   const handleAddBudgetItem = async (values: any) => {
     try {

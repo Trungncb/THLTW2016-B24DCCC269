@@ -18,7 +18,7 @@ import {
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { useMediaQuery } from 'react-responsive';
-import { Itinerary, ItineraryDay, Destination } from '@/models/travelplanner';
+import type { Itinerary, ItineraryDay, Destination } from '@/models/travelplanner';
 import { itineraryService, destinationService } from '@/services/TravelPlanner';
 import styles from './Itinerary.less';
 
@@ -30,10 +30,6 @@ const ItineraryComponent: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   const loadData = async () => {
     try {
@@ -50,6 +46,10 @@ const ItineraryComponent: React.FC = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const handleCreateItinerary = async (values: any) => {
     try {

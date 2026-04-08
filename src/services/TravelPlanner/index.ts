@@ -1,4 +1,4 @@
-import { Destination, Itinerary, BudgetItem, BudgetSummary } from '@/models/travelplanner';
+import type { Destination, Itinerary, BudgetItem, BudgetSummary } from '@/models/travelplanner';
 
 // Mock API service for destinations
 export const destinationService = {
@@ -105,7 +105,7 @@ export const destinationService = {
         price: 1300000,
         estimatedDays: 2,
         currency: 'VND',
-        attractions: ["Floating market", 'Bat pagoda', 'Orchid farm'],
+        attractions: ['Floating market', 'Bat pagoda', 'Orchid farm'],
         bestSeason: 'November to April',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),

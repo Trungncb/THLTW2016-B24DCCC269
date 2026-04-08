@@ -27,7 +27,7 @@ import {
 import dayjs from 'dayjs';
 import ApexChart from 'react-apexcharts';
 import { useMediaQuery } from 'react-responsive';
-import { Destination } from '@/models/travelplanner';
+import type { Destination } from '@/models/travelplanner';
 import { destinationService } from '@/services/TravelPlanner';
 import styles from './Admin.less';
 
@@ -38,10 +38,6 @@ const Admin: React.FC = () => {
   const [editingDestination, setEditingDestination] = useState<Destination | null>(null);
   const [loading, setLoading] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  useEffect(() => {
-    loadDestinations();
-  }, []);
 
   const loadDestinations = async () => {
     try {
@@ -54,6 +50,10 @@ const Admin: React.FC = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadDestinations();
+  }, []);
 
   const handleAddOredit = async (values: any) => {
     try {
