@@ -25,6 +25,12 @@
 		icon: 'HomeOutlined',
 	},
 	{
+        path: '/order',
+        name: 'Đơn hàng',
+        icon: 'ShoppingCartOutlined',
+        component: './Order',
+    },
+	{
 		path: '/gioi-thieu',
 		name: 'About',
 		component: './TienIch/GioiThieu',
@@ -42,12 +48,8 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
-	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
-	},
+	
+	
 
 	// DANH MUC HE THONG
 	// {
