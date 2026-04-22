@@ -43,12 +43,12 @@
 		component: './TodoList',
 	},
 	{
-		path: '/guess-number',
-		name: 'GuessNumber',
-		icon: 'QuestionCircleOutlined',
-		component: './GuessNumber',
-	},
+        
+  path: '/quan-li-bai-viet',
+  name: 'Quản lý bài viết',
+  component: '@/pages/QuanLiBaiViet',
 
+    },
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
